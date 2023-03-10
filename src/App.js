@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+import "./App.css";
+import "./pages/Appointment";
+import Appointment from "./pages/Appointment";
+import { useState, createContext } from "react";
+export const AppContext = createContext(null);
 
 function App() {
+  const [PatientDetails, setPatientDetails] = useState();
+  // function handleSave(newCourse) {
+  //   setPatientDetails([...PatientDetails, newPatientDetails]);
+  // }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="section">
+      <div className="App">
+        <AppContext.Provider
+          value={{
+            // handleSave,
+            PatientDetails,
+            setPatientDetails,
+          }}
+        ></AppContext.Provider>
+        <Appointment />
+      </div>
+    </section>
   );
 }
 
